@@ -3,9 +3,16 @@
 
 m = []
 
-for i in range(10): 
-   m.append(list(map(int, input().split())))
+for i in range(10):
+    m.append([])
+    for j in range(10):
+        m[i].append(0)
 
+for i in range(10): 
+    m[i] = list(map(int, input().split()))
+
+# for i in range(10): 
+# m.append(list(map(int, input().split())))
 x, y = 1, 1
 
 while True:
@@ -23,7 +30,7 @@ while True:
     elif m[x+1][y] != 1:
         x = x + 1
 
-print()
+# print()
 
 for i in range(10):
     for j in range(10):
