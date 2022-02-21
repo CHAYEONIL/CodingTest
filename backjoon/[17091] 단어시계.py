@@ -10,8 +10,8 @@ h = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
 
 h_list = ['zero', 'one', 'two', 'three', 'four', 'five',
-          'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'one'] 
-        # 시간 부분 리스트, 런타임 에러떄문에 one한번 더 추가 -> 배열의 초과 방지
+          'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', ' '] 
+        # 시간 부분 리스트
         
 m_list = ['o\' clock', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 
             'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 
