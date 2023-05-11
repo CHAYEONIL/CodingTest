@@ -1,52 +1,45 @@
+import sys
+input = sys.stdin.readline
+
+def count(data):
+    Max = 1
+    for i in range(n):
+        cnt = 1
+        for j in range(1,n):
+            if data[i][j] == data[i][j-1]:
+                cnt += 1
+            else:
+                cnt = 1
+            Max = max(Max,cnt)
+        cnt = 1
+        for j in range(1,n):
+            if  data[j][i] == data[j-1][i]:
+                cnt += 1
+            else:
+                cnt = 1
+            Max = max(Max,cnt)
+
+    return Max
+    
 n = int(input())
-
-array = []
-
-for _ in range(n) :
-    colors = list(map(str, input()))
-    array.append(colors)
-
-maxCount = 0 # 사탕 최대 개수
-
-# 배열의 행 같은 색 계산
-def width():
-    global maxCount
-
-    for k in range(n):
-        countRow = 1 # 초기 개수 1
-        for l in range(n - 1):
-            if array[k][l] == array[k][l + 1]:
-                countRow += 1
-                maxCount = max(maxCount, countRow) #증가시킨 값과 최대 사탕개수를 비교하여 큰값 대입
-            else:
-                countRow = 1
-
-# 배열의 열 같은 색 계산
-def height():
-    global maxCount
-
-    for k in range(n):
-        countcolumn = 1 # 초기 개수 1
-        for l in range(n - 1):
-            if array[l][k] == array[l - 1][k]:
-                countcolumn += 1
-                maxCount = max(maxCount, countcolumn) #증가시킨 값과 최대 사탕개수를 비교하여 큰값 대입
-            else:
-                countcolumn = 1
-
+data = [list(input()) for _ in range(n)]
+ans = 0
 for i in range(n):
-    for j in range(n-1):
-        # 만약 입력 받은 배열의 행의 원소가 다르다면
-        if array[i][j] != array[i][j+1]:
-            array[i][j], array[i][j + 1] = array[i][j + 1], array[i][j]
-            width()
-            height()
-            array[i][j + 1], array[i][j] = array[i][j], array[i][j + 1]
-        # 만약 입력 받은 배열의 열의 원소가 다르다면
-        if array[j][i] != array[j + 1][i]:
-            array[j][i], array[j + 1][i] = array[j + 1][i], array[j][i]
-            width()
-            height()
-            array[j + 1][i], array[j][i] = array[j][i], array[j + 1][i]
-
-print(maxCount)
+    for j in range(n):
+        # 열 바꾸기
+        if j+1 < n:
+        	# 인점한 것과 바꾸기
+            data[i][j], data[i][j+1] = data[i][j+1], data[i][j]
+            temp=count(data)
+            ans = max(ans,temp)
+            # 바꿨던 것을 다시 원래대로 돌려놓기
+            data[i][j], data[i][j+1] = data[i][j+1], data[i][j]
+        # 행 바꾸기
+        if i+1 < n:
+        	# 인점한 것과 바꾸기
+            data[i][j], data[i+1][j] = data[i+1][j], data[i][j]
+            temp=count(data)
+            ans = max(ans,temp)
+            # 바꿨던 것을 다시 원래대로 돌려놓기
+            data[i][j], data[i+1][j] = data[i+1][j], data[i][j]
+print(ans)
