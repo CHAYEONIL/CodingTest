@@ -1,30 +1,29 @@
-max = 1000001
-
-check = [True for _ in range(max)]
-
-#에라토스테네스의 체
-for i in range(2, int((max-1)**0.5)+1):
-    if check[i]:
-        for k in range(i+i, max, i):
-            check[k] = False
-
 import sys
-input = sys.stdin.readline
 
-# 입력받은 수가 소수인지에 대한 확인
-while(True):
-    n = int(input())
 
-    if n == 0:
-        break
+if __name__ == '__main__':
+    t = -1
 
-    flag = 0
+    tf_list = [True for i in range(1000001)]
+    tf_list[0] = False
+    tf_list[1] = False
+    for i in range(2, 1001):
+        if (tf_list[i] == True):
+            for k in range(i + i, 1000001, i):
+                tf_list[k] = False
 
-    for i in range(3, len(check)):
-        if check[i] and check[n-i]:
-            print("%d = %d + %d" %(n, i, n-i))
-            flag = 1
+
+    while(1):
+        t = int(sys.stdin.readline())
+
+        if t == 0:
             break
 
-    if flag == 0:
-        print("Goldbach's conjecture is wrong.")
+        check = -1
+        for i in range(3, t, 2):
+            if (tf_list[i] and tf_list[t - i]):
+                print(t, "=", i, "+", t - i)
+                check = 1
+                break
+        if (check == -1):
+            print("Goldbach's conjecture is wrong.")
