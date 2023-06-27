@@ -1,3 +1,6 @@
+# 1. 어디까지 봤는지 index, 그 동안 value로 비교
+# 2. index가 끝을 보면 value를 result와 비교해서 업데이트
+
 import sys
 
 T = int(input())

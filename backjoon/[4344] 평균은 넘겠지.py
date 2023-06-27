@@ -10,4 +10,4 @@ for _ in range(N):
             cnt += 1
 
     rate = cnt/list_i[0] * 100
-    print(f'{rate:.3f}%')
+    print('%.3f' %rate + '%')
