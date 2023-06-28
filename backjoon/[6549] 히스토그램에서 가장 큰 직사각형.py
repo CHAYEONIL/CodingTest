@@ -29,7 +29,6 @@ while True:
         if not stack or stack[-1][1] <= height:
             stack.append((i, height))  # 스택에 현재 막대기를 추가합니다.
 
-    # 반복이 종료되고, 스택에 남은 막대기가 있다면 계산합니다.
     while stack:
         stack_i, stack_height = stack.pop()
         width_start = 1
@@ -38,5 +37,4 @@ while True:
         result = (graph[0]+1 - width_start) * stack_height
         max_result = max(result, max_result) # 최대값 갱신
 
-    # 최대 직사각형 넓이를 출력합니다.
     print(max_result)
